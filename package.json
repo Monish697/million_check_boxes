@@ -1,0 +1,31 @@
+{
+    "name": "million_checkboxes",
+    "version": "1.0.0",
+    "description": "this is just to initate the project I will complete the project and push the code.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node --watch index.js",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Monish697/million_check_boxes.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/Monish697/million_check_boxes/issues"
+    },
+    "homepage": "https://github.com/Monish697/million_check_boxes#readme",
+    "dependencies": {
+        "@types/socket.io": "^3.0.1",
+        "express": "^5.2.1",
+        "socket.io": "^4.8.3"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.6",
+        "@types/node": "^25.6.0"
+    }
+}
