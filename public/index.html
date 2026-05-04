@@ -13,15 +13,9 @@
 
         <script>
             const socket = io();
-            const noOfCheckBoxes = 1000;
             let container = document.getElementById("container");
 
             socket.on(`server:emited:data`, (data) => {
-                // console.log(data);
-                // console.log(data.message.split(" ")[0]);
-                // let stateFromData = data.message.split(":")[1];
-                // console.log(stateFromData.trim());
-
                 //id of the checkbox
                 let idFromData = data.message.split(" ")[0];
                 //state of the box checked or not --not AI I have wrote this
@@ -31,12 +25,27 @@
                 console.log(elementToEmitDatainUI);
             });
 
-            for (let i = 0; i <= noOfCheckBoxes; i++) {
-                let checkBoxElement = document.createElement("input");
-                checkBoxElement.type = "checkbox";
-                checkBoxElement.id = `checkbox-${i}`;
-                container.append(checkBoxElement);
-            }
+            window.addEventListener("load", async () => {
+                let responce = await fetch("http://localhost:5000/checkBoxes", {
+                    method: "GET",
+                });
+                const data = await responce.json();
+                console.log(data);
+
+                if (data && data.checkBoxes) {
+                    data.checkBoxes.forEach((checked, index) => {
+                        let checkBoxElement = document.createElement("input");
+                        checkBoxElement.type = "checkbox";
+                        checkBoxElement.id = `checkbox-${index}`;
+                        checkBoxElement.checked = checked;
+                        container.append(checkBoxElement);
+                    });
+                }
+            });
+
+            // for (let i = 0; i <= noOfCheckBoxes; i++) {
+
+            // }
             container.addEventListener("click", (e) => {
                 if (e.target.type === "checkbox") {
                     console.log(
